@@ -18,8 +18,8 @@ namespace TownOfUs.NeutralRoles.DoomsayerMod
                 var playerResults = PlayerReportFeedback(doomsayerRole.LastObservedPlayer);
                 var roleResults = RoleReportFeedback(doomsayerRole.LastObservedPlayer);
 
-                if (!string.IsNullOrWhiteSpace(playerResults)) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, playerResults);
-                if (!string.IsNullOrWhiteSpace(roleResults)) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, roleResults);
+                if (!string.IsNullOrWhiteSpace(playerResults)) FastDestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, playerResults);
+                if (!string.IsNullOrWhiteSpace(roleResults)) FastDestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, roleResults);
             }
         }
 

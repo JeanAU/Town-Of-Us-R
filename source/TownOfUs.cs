@@ -1,3 +1,5 @@
+global using TownOfUs.Utilities;
+
 using System;
 using System.Linq;
 using System.Net;
@@ -8,10 +10,12 @@ using BepInEx.Configuration;
 using BepInEx.Unity.IL2CPP;
 using HarmonyLib;
 using Reactor;
+using Reactor.Utilities;
 using Reactor.Utilities.Extensions;
 using Reactor.Networking.Attributes;
 using TownOfUs.CustomOption;
 using TownOfUs.Patches;
+using TownOfUs.Utilities;
 using TownOfUs.RainbowMod;
 using TownOfUs.Extensions;
 using Il2CppInterop.Runtime;
@@ -114,12 +118,41 @@ namespace TownOfUs
 
         private static DLoadImage _iCallLoadImage;
 
+    
 
         private Harmony _harmony;
 
-        public ConfigEntry<string> Ip { get; set; }
+        public static ConfigEntry<string> Ip { get; set; }
 
-        public ConfigEntry<ushort> Port { get; set; }
+        public static ConfigEntry<ushort> Port { get; set; }
+
+        // This is part of the Mini.RegionInstaller, Licensed under GPLv3
+        // file="RegionInstallPlugin.cs" company="miniduikboot">
+        public static void UpdateRegions() {
+            ServerManager serverManager = FastDestroyableSingleton<ServerManager>.Instance;
+            var regions = new IRegionInfo[] {
+                new StaticHttpRegionInfo("Custom", StringNames.NoTranslation, Ip.Value, new Il2CppReferenceArray<ServerInfo>(new ServerInfo[1] { new ServerInfo("Custom", Ip.Value, Port.Value, false) })).Cast<IRegionInfo>()
+            };
+            
+            IRegionInfo currentRegion = serverManager.CurrentRegion;
+            PluginSingleton<TownOfUs>.Instance.Log.LogMessage($"Adding {regions.Length} regions");
+            foreach (IRegionInfo region in regions) {
+                if (region == null) 
+                    PluginSingleton<TownOfUs>.Instance.Log.LogError("Could not add region");
+                else {
+                    if (currentRegion != null && region.Name.Equals(currentRegion.Name, StringComparison.OrdinalIgnoreCase)) 
+                        currentRegion = region;               
+                    serverManager.AddOrUpdateRegion(region);
+                
+
+            // AU remembers the previous region that was set, so we need to restore it
+            if (currentRegion != null) {
+                PluginSingleton<TownOfUs>.Instance.Log.LogDebug("Resetting previous region");
+                serverManager.SetRegion(currentRegion);
+            }
+        }
+    }
+}
 
         public override void Load()
         {
@@ -208,6 +241,7 @@ namespace TownOfUs
 
             PalettePatch.Load();
             ClassInjector.RegisterTypeInIl2Cpp<RainbowBehaviour>();
+            UpdateRegions();
 
             // RegisterInIl2CppAttribute.Register();
 

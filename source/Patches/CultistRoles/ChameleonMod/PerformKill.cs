@@ -15,7 +15,7 @@ namespace TownOfUs.CultistRoles.ChameleonMod
             if (!PlayerControl.LocalPlayer.CanMove) return false;
             if (PlayerControl.LocalPlayer.Data.IsDead) return false;
             var role = Role.GetRole<Chameleon>(PlayerControl.LocalPlayer);
-            var swoopButton = DestroyableSingleton<HudManager>.Instance.KillButton;
+            var swoopButton = FastDestroyableSingleton<HudManager>.Instance.KillButton;
             if (__instance == swoopButton)
             {
                 if (__instance.isCoolingDown) return false;

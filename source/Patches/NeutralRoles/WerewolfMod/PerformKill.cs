@@ -29,7 +29,7 @@ namespace TownOfUs.NeutralRoles.WerewolfMod
 
             if (role.KillTimer() != 0) return false;
             if (!role.Rampaged) return false;
-            if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
+            if (__instance != FastDestroyableSingleton<HudManager>.Instance.KillButton) return true;
             if (!__instance.isActiveAndEnabled || __instance.isCoolingDown) return false;
             if (role.ClosestPlayer == null) return false;
             var distBetweenPlayers = Utils.GetDistBetweenPlayers(PlayerControl.LocalPlayer, role.ClosestPlayer);

@@ -13,7 +13,7 @@ namespace TownOfUs.CrewmateRoles.TrackerMod
         public static Sprite Sprite => TownOfUs.Arrow;
         public static bool Prefix(KillButton __instance)
         {
-            if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
+            if (__instance != FastDestroyableSingleton<HudManager>.Instance.KillButton) return true;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.Tracker)) return true;
             var role = Role.GetRole<Tracker>(PlayerControl.LocalPlayer);
             if (!PlayerControl.LocalPlayer.CanMove || role.ClosestPlayer == null) return false;

@@ -1061,7 +1061,7 @@ namespace TownOfUs
                                 .Cast<IDisconnectHandler>());
                             if (GameManager.Instance.CheckTaskCompletion()) return;
 
-                            DestroyableSingleton<HudManager>.Instance.OpenMeetingRoom(buttonBarry);
+                            FastDestroyableSingleton<HudManager>.Instance.OpenMeetingRoom(buttonBarry);
                             buttonBarry.RpcStartMeeting(null);
                         }
                         break;

@@ -16,8 +16,8 @@ namespace TownOfUs.Patches.CustomHats
     {
         public static bool Prefix(HatsTab __instance)
         {
-            __instance.currentHat = DestroyableSingleton<HatManager>.Instance.GetHatById(DataManager.Player.Customization.Hat);
-            var allHats = DestroyableSingleton<HatManager>.Instance.GetUnlockedHats();
+            __instance.currentHat = FastDestroyableSingleton<HatManager>.Instance.GetHatById(DataManager.Player.Customization.Hat);
+            var allHats = FastDestroyableSingleton<HatManager>.Instance.GetUnlockedHats();
             var hatGroups = new SortedList<string, List<HatData>>(
                 new PaddedComparer<string>("Vanilla", "")
             );

@@ -173,7 +173,7 @@ namespace TownOfUs.Roles.Modifiers
                     PlayerControl.LocalPlayer.SetKillTimer(PerformKill.LastImp() ? lowerKC : (PerformKill.IncreasedKC() ? normalKC : upperKC));
                 }
                 else PlayerControl.LocalPlayer.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown + CustomGameOptions.DetonateDelay);
-                DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
+                FastDestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
                 bomber.Bomb = BombExtentions.CreateBomb(pos);
             }
         }

@@ -105,7 +105,7 @@ namespace TownOfUs.CrewmateRoles.ImitatorMod
                     }
 
                     if (!PlayerControl.LocalPlayer.Is(RoleEnum.Investigator) && !PlayerControl.LocalPlayer.Is(RoleEnum.Mystic)
-                        && !PlayerControl.LocalPlayer.Is(RoleEnum.Spy)) DestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
+                        && !PlayerControl.LocalPlayer.Is(RoleEnum.Spy)) FastDestroyableSingleton<HudManager>.Instance.KillButton.gameObject.SetActive(false);
                 }
 
                 if (StartImitate.ImitatingPlayer.Is(RoleEnum.Medium))

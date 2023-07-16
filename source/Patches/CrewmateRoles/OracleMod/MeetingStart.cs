@@ -17,7 +17,7 @@ namespace TownOfUs.CrewmateRoles.OracleMod
             {
                 var playerResults = PlayerReportFeedback(oracleRole.Confessor);
 
-                if (!string.IsNullOrWhiteSpace(playerResults)) DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, playerResults);
+                if (!string.IsNullOrWhiteSpace(playerResults)) FastDestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, playerResults);
             }
         }
 

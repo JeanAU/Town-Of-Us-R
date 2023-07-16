@@ -545,8 +545,8 @@ namespace TownOfUs
                     {
                     }
 
-                    DestroyableSingleton<HudManager>.Instance.KillOverlay.ShowKillAnimation(killer.Data, data);
-                    DestroyableSingleton<HudManager>.Instance.ShadowQuad.gameObject.SetActive(false);
+                    FastDestroyableSingleton<HudManager>.Instance.KillOverlay.ShowKillAnimation(killer.Data, data);
+                    FastDestroyableSingleton<HudManager>.Instance.ShadowQuad.gameObject.SetActive(false);
                     target.nameText().GetComponent<MeshRenderer>().material.SetInt("_Mask", 0);
                     target.RpcSetScanner(false);
                     var importantTextTask = new GameObject("_Player").AddComponent<ImportantTextTask>();
@@ -561,13 +561,13 @@ namespace TownOfUs
                         }
 
                         target.myTasks.Clear();
-                        importantTextTask.Text = DestroyableSingleton<TranslationController>.Instance.GetString(
+                        importantTextTask.Text = FastDestroyableSingleton<TranslationController>.Instance.GetString(
                             StringNames.GhostIgnoreTasks,
                             new Il2CppReferenceArray<Il2CppSystem.Object>(0));
                     }
                     else
                     {
-                        importantTextTask.Text = DestroyableSingleton<TranslationController>.Instance.GetString(
+                        importantTextTask.Text = FastDestroyableSingleton<TranslationController>.Instance.GetString(
                             StringNames.GhostDoTasks,
                             new Il2CppReferenceArray<Il2CppSystem.Object>(0));
                     }
@@ -900,7 +900,7 @@ namespace TownOfUs
             color.a = alpha;
             if (HudManager.InstanceExists && HudManager.Instance.FullScreen)
             {
-                var fullscreen = DestroyableSingleton<HudManager>.Instance.FullScreen;
+                var fullscreen = FastDestroyableSingleton<HudManager>.Instance.FullScreen;
                 fullscreen.enabled = true;
                 fullscreen.gameObject.active = true;
                 fullscreen.color = color;
@@ -910,7 +910,7 @@ namespace TownOfUs
 
             if (HudManager.InstanceExists && HudManager.Instance.FullScreen)
             {
-                var fullscreen = DestroyableSingleton<HudManager>.Instance.FullScreen;
+                var fullscreen = FastDestroyableSingleton<HudManager>.Instance.FullScreen;
                 if (fullscreen.color.Equals(color))
                 {
                     fullscreen.color = new Color(1f, 0f, 0f, 0.37254903f);

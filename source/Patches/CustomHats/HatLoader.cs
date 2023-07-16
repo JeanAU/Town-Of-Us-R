@@ -25,7 +25,7 @@ namespace TownOfUs.Patches.CustomHats
 
         internal static void LoadHatsRoutine()
         {
-            if (LoadedHats || !DestroyableSingleton<HatManager>.InstanceExists || DestroyableSingleton<HatManager>.Instance.allHats.Count == 0)
+            if (LoadedHats || !DestroyableSingleton<HatManager>.InstanceExists || FastDestroyableSingleton<HatManager>.Instance.allHats.Count == 0)
                 return;
             LoadedHats = true;
             Coroutines.Start(LoadHats());
@@ -40,17 +40,17 @@ namespace TownOfUs.Patches.CustomHats
                 var hatBehaviours = DiscoverHatBehaviours(hatJson);
 
                 var hatData = new List<HatData>();
-                hatData.AddRange(DestroyableSingleton<HatManager>.Instance.allHats);
+                hatData.AddRange(FastDestroyableSingleton<HatManager>.Instance.allHats);
                 hatData.ForEach((Action<HatData>)(x => x.StoreName = "Vanilla"));
 
-                var originalCount = DestroyableSingleton<HatManager>.Instance.allHats.ToList().Count;
+                var originalCount = FastDestroyableSingleton<HatManager>.Instance.allHats.ToList().Count;
                 hatBehaviours.Reverse();
                 for (var i = 0; i < hatBehaviours.Count; i++)
                 {
                     hatBehaviours[i].displayOrder = originalCount + i;
                     hatData.Add(hatBehaviours[i]);
                 }
-                DestroyableSingleton<HatManager>.Instance.allHats = hatData.ToArray();
+                FastDestroyableSingleton<HatManager>.Instance.allHats = hatData.ToArray();
             }
             catch (Exception e)
             {

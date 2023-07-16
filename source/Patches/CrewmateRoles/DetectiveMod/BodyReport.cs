@@ -42,8 +42,8 @@ namespace TownOfUs.CrewmateRoles.DetectiveMod
             if (string.IsNullOrWhiteSpace(reportMsg))
                 return;
 
-            if (DestroyableSingleton<HudManager>.Instance)
-                DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, reportMsg);
+            if (FastDestroyableSingleton<HudManager>.Instance)
+                FastDestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, reportMsg);
         }
     }
 }

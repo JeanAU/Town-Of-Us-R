@@ -11,7 +11,7 @@ namespace TownOfUs.CrewmateRoles.VampireHunterMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
+            if (__instance != FastDestroyableSingleton<HudManager>.Instance.KillButton) return true;
             if (!PlayerControl.LocalPlayer.Is(RoleEnum.VampireHunter)) return true;
             var role = Role.GetRole<VampireHunter>(PlayerControl.LocalPlayer);
             if (!PlayerControl.LocalPlayer.CanMove || role.ClosestPlayer == null) return false;

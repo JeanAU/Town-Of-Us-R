@@ -36,7 +36,7 @@ namespace TownOfUs.CrewmateRoles.SheriffMod
                     }
                 }
 
-            DestroyableSingleton<HudManager>.Instance.ReportButton.SetActive(flag2);
+            FastDestroyableSingleton<HudManager>.Instance.ReportButton.SetActive(flag2);
         }
     }
 

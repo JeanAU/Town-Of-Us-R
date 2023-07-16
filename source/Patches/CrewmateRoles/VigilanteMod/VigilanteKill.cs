@@ -50,7 +50,7 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
             bool checkLover = true
         )
         {
-            var hudManager = DestroyableSingleton<HudManager>.Instance;
+            var hudManager = FastDestroyableSingleton<HudManager>.Instance;
             if (checkLover)
             {
                 SoundManager.Instance.PlaySound(player.KillSfx, false, 0.8f);
@@ -75,14 +75,14 @@ namespace TownOfUs.CrewmateRoles.VigilanteMod
                     }
 
                     player.myTasks.Clear();
-                    importantTextTask.Text = DestroyableSingleton<TranslationController>.Instance.GetString(
+                    importantTextTask.Text = FastDestroyableSingleton<TranslationController>.Instance.GetString(
                         StringNames.GhostIgnoreTasks,
                         new Il2CppReferenceArray<Il2CppSystem.Object>(0)
                     );
                 }
                 else
                 {
-                    importantTextTask.Text = DestroyableSingleton<TranslationController>.Instance.GetString(
+                    importantTextTask.Text = FastDestroyableSingleton<TranslationController>.Instance.GetString(
                         StringNames.GhostDoTasks,
                         new Il2CppReferenceArray<Il2CppSystem.Object>(0));
                 }

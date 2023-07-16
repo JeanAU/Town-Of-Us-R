@@ -42,7 +42,7 @@ namespace TownOfUs.ImpostorRoles.BomberMod
                         PlayerControl.LocalPlayer.SetKillTimer(PerformKill.LastImp() ? lowerKC : (PerformKill.IncreasedKC() ? normalKC : upperKC));
                     }
                     else PlayerControl.LocalPlayer.SetKillTimer(GameOptionsManager.Instance.currentNormalGameOptions.KillCooldown + CustomGameOptions.DetonateDelay);
-                    DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
+                    FastDestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
                     role.Bomb = BombExtentions.CreateBomb(pos);
                     return false;
                 }

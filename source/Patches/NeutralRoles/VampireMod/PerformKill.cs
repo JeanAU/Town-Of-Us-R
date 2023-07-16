@@ -18,7 +18,7 @@ namespace TownOfUs.NeutralRoles.VampireMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
+            if (__instance != FastDestroyableSingleton<HudManager>.Instance.KillButton) return true;
             var flag = PlayerControl.LocalPlayer.Is(RoleEnum.Vampire);
             if (!flag) return true;
             var role = Role.GetRole<Vampire>(PlayerControl.LocalPlayer);

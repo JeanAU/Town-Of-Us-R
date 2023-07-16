@@ -11,7 +11,6 @@ using Il2CppInterop.Runtime.Injection;
 using UnityEngine;
 using Reactor.Utilities;
 using TownOfUs.Roles;
-using Hazel;
 
 namespace TownOfUs.Patches
 {
@@ -271,12 +270,12 @@ namespace TownOfUs.Patches
 
         public static IEnumerator waitStart(Action next)
         {
-            while (DestroyableSingleton<HudManager>.Instance.UICamera.transform.Find("SpawnInMinigame(Clone)") == null)
+            while (FastDestroyableSingleton<HudManager>.Instance.UICamera.transform.Find("SpawnInMinigame(Clone)") == null)
             {
                 yield return null;
             }
             yield return new WaitForSeconds(0.5f);
-            while (DestroyableSingleton<HudManager>.Instance.UICamera.transform.Find("SpawnInMinigame(Clone)") != null)
+            while (FastDestroyableSingleton<HudManager>.Instance.UICamera.transform.Find("SpawnInMinigame(Clone)") != null)
             {
                 yield return null;
             }
@@ -289,7 +288,7 @@ namespace TownOfUs.Patches
                 yield return null;
             }
             yield return new WaitForSeconds(0.5f);
-            while (DestroyableSingleton<HudManager>.Instance.PlayerCam.transform.Find("SpawnInMinigame(Clone)") != null)
+            while (FastDestroyableSingleton<HudManager>.Instance.PlayerCam.transform.Find("SpawnInMinigame(Clone)") != null)
             {
                 yield return null;
             }       

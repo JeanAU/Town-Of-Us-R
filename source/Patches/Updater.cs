@@ -58,7 +58,7 @@ namespace TownOfUs {
                     })));
 
                     //Set popup stuff
-                    TwitchManager man = DestroyableSingleton<TwitchManager>.Instance;
+                    TwitchManager man = FastDestroyableSingleton<TwitchManager>.Instance;
                     ModUpdater.InfoPopup = UnityEngine.Object.Instantiate<GenericPopup>(man.TwitchPopup);
                     ModUpdater.InfoPopup.TextAreaTMP.fontSize *= 0.7f;
                     ModUpdater.InfoPopup.TextAreaTMP.enableAutoSizing = false;
@@ -101,7 +101,7 @@ namespace TownOfUs {
                     })));
 
                     //Set popup stuff
-                    TwitchManager man = DestroyableSingleton<TwitchManager>.Instance;
+                    TwitchManager man = FastDestroyableSingleton<TwitchManager>.Instance;
                     ModUpdater.InfoPopup = UnityEngine.Object.Instantiate<GenericPopup>(man.TwitchPopup);
                     ModUpdater.InfoPopup.TextAreaTMP.fontSize *= 0.7f;
                     ModUpdater.InfoPopup.TextAreaTMP.enableAutoSizing = false;

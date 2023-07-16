@@ -13,7 +13,7 @@ namespace TownOfUs.CultistRoles.SeerMod
     {
         public static bool Prefix(KillButton __instance)
         {
-            if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
+            if (__instance != FastDestroyableSingleton<HudManager>.Instance.KillButton) return true;
             var flag = PlayerControl.LocalPlayer.Is(RoleEnum.CultistSeer);
             if (!flag) return true;
             var role = Role.GetRole<CultistSeer>(PlayerControl.LocalPlayer);

@@ -13,9 +13,9 @@ namespace TownOfUs.Patches
                            && !Minigame.Instance
                            && !__instance.shapeshifting
                            && (!DestroyableSingleton<HudManager>.InstanceExists
-                               || !DestroyableSingleton<HudManager>.Instance.Chat.IsOpenOrOpening
-                               && !DestroyableSingleton<HudManager>.Instance.KillOverlay.IsOpen
-                               && !DestroyableSingleton<HudManager>.Instance.GameMenu.IsOpen)
+                               || !FastDestroyableSingleton<HudManager>.Instance.Chat.IsOpenOrOpening
+                               && !FastDestroyableSingleton<HudManager>.Instance.KillOverlay.IsOpen
+                               && !FastDestroyableSingleton<HudManager>.Instance.GameMenu.IsOpen)
                            /*&& (!ControllerManager.Instance || !ControllerManager.Instance.IsUiControllerActive)*/
                            && (!MapBehaviour.Instance || !MapBehaviour.Instance.IsOpenStopped)
                            && !MeetingHud.Instance

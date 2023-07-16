@@ -51,9 +51,9 @@ namespace TownOfUs.CrewmateRoles.MedicMod
 
             //System.Console.WriteLine("SEFENFTH");
 
-            if (DestroyableSingleton<HudManager>.Instance)
+            if (FastDestroyableSingleton<HudManager>.Instance)
                 // Send the message through chat only visible to the medic
-                DestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, reportMsg);
+                FastDestroyableSingleton<HudManager>.Instance.Chat.AddChat(PlayerControl.LocalPlayer, reportMsg);
         }
     }
 }

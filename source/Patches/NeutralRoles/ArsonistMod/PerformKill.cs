@@ -48,7 +48,7 @@ namespace TownOfUs.NeutralRoles.ArsonistMod
                 else return false;
             }
 
-            if (__instance != DestroyableSingleton<HudManager>.Instance.KillButton) return true;
+            if (__instance != FastDestroyableSingleton<HudManager>.Instance.KillButton) return true;
             if (role.DousedAlive == CustomGameOptions.MaxDoused) return false;
             if (role.ClosestPlayerDouse == null) return false;
             var distBetweenPlayers = Utils.GetDistBetweenPlayers(PlayerControl.LocalPlayer, role.ClosestPlayerDouse);

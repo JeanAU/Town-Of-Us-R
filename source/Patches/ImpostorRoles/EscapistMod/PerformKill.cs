@@ -28,7 +28,7 @@ namespace TownOfUs.ImpostorRoles.EscapistMod
                 {
                     role.EscapePoint = PlayerControl.LocalPlayer.transform.position;
                     role.EscapeButton.graphic.sprite = EscapeSprite;
-                    DestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
+                    FastDestroyableSingleton<HudManager>.Instance.KillButton.SetTarget(null);
                     if (role.EscapeTimer() < 5f)
                         role.LastEscape = DateTime.UtcNow.AddSeconds(5 - CustomGameOptions.EscapeCd);
                 }

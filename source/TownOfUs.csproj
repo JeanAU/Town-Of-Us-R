@@ -4,6 +4,7 @@
 		<Version>5.0.2</Version>
 		<DebugType>embedded</DebugType>
 		<LangVersion>latest</LangVersion>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 
 	<PropertyGroup>
